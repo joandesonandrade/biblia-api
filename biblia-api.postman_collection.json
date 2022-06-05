@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "e83db15f-dcbf-4bbe-8bb6-856316155152",
+		"name": "biblia-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19530167"
+	},
+	"item": [
+		{
+			"name": "search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/search/:abbrev/:chapter/:verse",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"search",
+						":abbrev",
+						":chapter",
+						":verse"
+					],
+					"variable": [
+						{
+							"key": "abbrev",
+							"value": "jl"
+						},
+						{
+							"key": "chapter",
+							"value": "1"
+						},
+						{
+							"key": "verse",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "random",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/random/:abbrev",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"random",
+						":abbrev"
+					],
+					"variable": [
+						{
+							"key": "abbrev",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

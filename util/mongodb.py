@@ -45,7 +45,7 @@ class MongoDB:
         if result:
             n_values = {}
             for key in result:
-                if type(result[key]) != str:
+                if type(result[key]) != str and not type(result[key]) == dict:
                     result[key] = str(result[key])
                 n_values.update({key: result[key]})
             return n_values
@@ -57,7 +57,15 @@ class MongoDB:
 
         self.collection = self.getCollection(name=collection)
 
-        return self.collection.find(filter=filter)
+        results = self.collection.find(filter=filter)
+
+        n_values = []
+        for result in results:
+            for key in result:
+                if type(result[key]) != str and not type(result[key]) == dict:
+                    result[key] = str(result[key])
+            n_values.append([result])
+        return n_values
 
     def set(self, _id: str = '', uid: str = '', data: dict = None, collection: str = 'biblia', prefix: str = '') -> dict:
         if not data:

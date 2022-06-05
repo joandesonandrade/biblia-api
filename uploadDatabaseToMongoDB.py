@@ -53,22 +53,51 @@ print("ok!")
 
 print("migrate data to mongodb...")
 
+books = list()
+
 for d in data:
     try:
         book = d["name"]
-        for ic, chater in enumerate(d["chapters"]):
-            for iv, verse in enumerate(chater):
-                n_chater = ic + 1
+        abbrev = d["abbrev"]
+        mx_verse = 0
+        n_chapter = 0
+        chapters = {}
+        for ic, chapter in enumerate(d["chapters"]):
+            for iv, verse in enumerate(chapter):
+                mx_verse += 1
+                n_chapter = ic + 1
                 n_verse = iv + 1
                 payload = dict(
                     book=book,
+                    abbrev=abbrev,
                     verse=n_verse,
-                    chater=n_chater,
-                    text=chater[iv]
+                    chapter=n_chapter,
+                    text=chapter[iv]
                 )
                 mongoInstance.set(
                     data=payload
                 )
-                print("%s %s:%s %s - saved." % (book, n_chater, n_verse, chater[iv]))
+                print("%s %s:%s %s - saved." % (book, n_chapter, n_verse, chapter[iv]))
+            chapters[str(n_chapter)] = {
+                "verses": mx_verse
+            }
+            mx_verse = 0
+        books.append({
+            "book": book,
+            "abbrev": abbrev,
+            "chapters": chapters
+        })
+        chapters = {}
     except IndexError:
         continue
+
+print("data uploaded!")
+
+print("migrate books and abbrov to mongodb...")
+for book in books:
+    mongoInstance.set(
+        data=book,
+        collection="books"
+    )
+
+print("[+] successful")

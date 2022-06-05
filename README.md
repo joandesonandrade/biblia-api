@@ -19,7 +19,7 @@ execute o comando
 `python uploadDatabaseToMongoDB.py`
 
 Certifique-se de renomear o arquivo `.env.example` para `.env`
-e preenche-lo com os seus dados de configuração.
+e preenche-lo com os seus dados de configuração, mova o arquivo `.env` para `docker/.env.prod`.
 
 ### Requerimentos
 Certifique-se de rodar os comandos de requirements
@@ -31,4 +31,5 @@ Use o Docker para deploy
 `docker build -t biblia-api .`
 
 ### Teste
-`curl --location --request GET 'http://127.0.0.1:3000/search/isaias-6-8'`
+`curl --location --request GET 'http://127.0.0.1:3000/search/is/6/8'`
+param book/abbrev/verse
