@@ -32,7 +32,7 @@ def resposeError(msg: str = None, code=404) -> JSONResponse:
 
 
 @app.get("/random")
-async def random():
+async def random() -> JSONResponse:
     instance = mongodb.MongoDB(Env=Env)
     results = instance.findAll(
         filter={},
@@ -54,11 +54,11 @@ async def random():
         collection="biblia"
     )
 
-    return result
+    return resposeSuccess(data=result)
 
 
 @app.get("/books")
-async def books():
+async def books() -> JSONResponse:
     instance = mongodb.MongoDB(Env=Env)
     results = instance.findAll(
         filter={},
