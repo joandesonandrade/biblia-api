@@ -54,7 +54,7 @@ async def random() -> JSONResponse:
         collection="biblia"
     )
 
-    result["text"] = str(result["text"]).replace("\"", "")
+    result["text"] = str(result["text"]).replace("\"", "").replace("\n", "")
 
     return resposeSuccess(data=result)
 
