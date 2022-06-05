@@ -25,15 +25,15 @@
 					"variable": [
 						{
 							"key": "abbrev",
-							"value": "jl"
+							"value": "is"
 						},
 						{
 							"key": "chapter",
-							"value": "1"
+							"value": "6"
 						},
 						{
 							"key": "verse",
-							"value": "1"
+							"value": "9"
 						}
 					]
 				}
@@ -69,11 +69,34 @@
 					],
 					"path": [
 						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chapters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/chapters/:abbrev/:chapter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"chapters",
+						":abbrev",
+						":chapter"
 					],
 					"variable": [
 						{
 							"key": "abbrev",
-							"value": ""
+							"value": "is"
+						},
+						{
+							"key": "chapter",
+							"value": "2"
 						}
 					]
 				}
@@ -104,7 +127,7 @@
 	"variable": [
 		{
 			"key": "url",
-			"value": "",
+			"value": "http://127.0.0.1:3000",
 			"type": "string"
 		}
 	]
