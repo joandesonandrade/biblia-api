@@ -63,13 +63,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/random/:abbrev",
+					"raw": "{{url}}/random",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"random",
-						":abbrev"
+						"random"
 					],
 					"variable": [
 						{
