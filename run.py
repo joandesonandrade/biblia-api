@@ -59,6 +59,20 @@ async def random() -> JSONResponse:
     return resposeSuccess(data=result)
 
 
+@app.get('/book/{abbrev}')
+async def books(abbrev: str = '') -> JSONResponse:
+    instance = mongodb.MongoDB(Env=Env)
+    results = instance.findAll(
+        filter=dict(
+            abbrev=abbrev
+        ),
+        collection="books"
+    )
+    if results:
+        return resposeSuccess(data=results)
+    return resposeError(msg="not found", code=404)
+
+
 @app.get('/books')
 async def books() -> JSONResponse:
     instance = mongodb.MongoDB(Env=Env)
