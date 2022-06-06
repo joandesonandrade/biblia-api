@@ -88,7 +88,7 @@ async def books() -> JSONResponse:
 @app.get('/chapters/{abbrev}/{chapter}')
 async def chapters(abbrev: str = '', chapter: int = 1) -> JSONResponse:
     instance = mongodb.MongoDB(Env=Env)
-    result = instance.findAll(
+    result = instance.findOne(
         filter=dict(
             abbrev=abbrev,
             chapter=chapter
