@@ -62,7 +62,7 @@ async def random() -> JSONResponse:
 @app.get('/book/{abbrev}')
 async def books(abbrev: str = '') -> JSONResponse:
     instance = mongodb.MongoDB(Env=Env)
-    results = instance.findAll(
+    results = instance.findOne(
         filter=dict(
             abbrev=abbrev
         ),
